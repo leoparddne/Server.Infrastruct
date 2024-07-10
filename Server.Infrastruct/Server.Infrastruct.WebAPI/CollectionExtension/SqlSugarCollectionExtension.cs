@@ -1,8 +1,8 @@
-﻿using Common.Toolkit.Helper;
+﻿using Common.Toolkit.Extention;
+using Common.Toolkit.Helper;
 using Server.Infrastruct.WebAPI.Model;
 using SqlSugar;
 using System.Text;
-using Common.Toolkit.Extention;
 
 namespace Server.Infrastruct.WebAPI.CollectionExtension
 {

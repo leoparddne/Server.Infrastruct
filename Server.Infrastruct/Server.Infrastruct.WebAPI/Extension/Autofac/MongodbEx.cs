@@ -8,7 +8,7 @@ namespace Server.Infrastruct.WebAPI.Extension.Autofac
         public static ContainerBuilder MongodbDI(this ContainerBuilder builder)
         {
 
-            //builder.RegisterGeneric(typeof(MongoBaseService<>)).As(typeof(IMongoBaseService<>)).InstancePerLifetimeScope();
+            builder.RegisterGeneric(typeof(MongoBaseService<>)).As(typeof(IMongoBaseService<>)).InstancePerLifetimeScope();
 
             return builder;
         }
