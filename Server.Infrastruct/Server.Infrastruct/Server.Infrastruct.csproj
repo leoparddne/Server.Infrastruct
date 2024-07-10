@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonToolkit\CommonToolkit\Common.Toolkit\Common.Toolkit.csproj" />
+    <ProjectReference Include="..\Server.Domain\Server.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
