@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Consul" Version="1.6.10.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\CommonToolkit\CommonToolkit\Common.Toolkit\Common.Toolkit.csproj" />
     <ProjectReference Include="..\Server.Domain\Server.Domain.csproj" />
   </ItemGroup>
