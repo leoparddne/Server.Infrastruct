@@ -19,4 +19,13 @@
     <ProjectReference Include="..\Server.Infrastruct.WebAPI\Server.Infrastruct.WebAPI.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Install.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Uninstall.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
