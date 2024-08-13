@@ -1,4 +1,4 @@
-﻿using Common.Toolkit.Helper;
+using Common.Toolkit.Helper;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -66,9 +66,18 @@ namespace Server.Infrastruct.WebAPI.CollectionExtension
                     string errorMessage = string.Empty;
                     if (!context.ModelState.IsValid)
                     {
-                        if (context.ModelState.Values.ToList() is not null && context.ModelState.Values.ToList().Count > 0)
+                        if (!context.ModelState.Values.IsNullOrEmpty())
                         {
-                            errorMessage = context.ModelState.Values.ToList().FirstOrDefault().Errors.FirstOrDefault().ErrorMessage;
+                            var modelList = context.ModelState.Values.ToList();
+                            var invalidList = modelList.Where(f => f.ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid)?.ToList();
+                            if (!invalidList.IsNullOrEmpty())
+                            {
+                                var firstModel = invalidList.FirstOrDefault();
+                                if (!firstModel.Errors.IsNullOrEmpty())
+                                {
+                                    errorMessage = firstModel.Errors.FirstOrDefault().ErrorMessage;
+                                }
+                            }
                         }
                     }
 

@@ -24,6 +24,9 @@ namespace Server.Infrastruct.WebAPI.Test
 
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.WebHost.UseUrls($"http://{ip}:{port}");//单个设置
+
+
             if (System.OperatingSystem.IsWindows())
             {
                 builder.Host.UseWindowsService();
@@ -52,6 +55,10 @@ namespace Server.Infrastruct.WebAPI.Test
               .UseServiceProviderFactory(new AutofacServiceProviderFactory())
               .ConfigureContainer<ContainerBuilder>(build =>
               {
+
+                  //IOCNameModuleRegister.SetLibraryName("Server.EddySuite");
+                  //build.RegisterModule(new IOCNameModuleRegister());
+
                   build.RegisterModule(new IOCModuleRegister());
                   build.RegisterModule(new IOCProperityModuleRegister());
               });
