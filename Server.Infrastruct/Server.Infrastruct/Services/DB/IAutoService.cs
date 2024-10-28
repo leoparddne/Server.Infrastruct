@@ -15,11 +15,13 @@ namespace Server.Infrastruct.Services.DB
         void Create(T entity);
         void Delete(List<string> ids);
         bool Exist(string id);
+        bool Exist(Expression<Func<T, bool>> whereCondition);
         List<T> Get(Expression<Func<T, bool>> whereCondition, Expression<Func<T, object>>? orderByCondition = null, OrderByType orderByType = OrderByType.Asc);
         PageModel<T> Get(Expression<Func<T, bool>> whereCondition, Expression<Func<T, object>> orderByCondition, int pageIndex = 1, int pageSize = 20, OrderByType orderByType = OrderByType.Asc);
         T GetByID(string id);
         List<T> GetCondition(List<SearchConditionItem> dto);
         PageModel<T> GetConditionPage(SearchConditionPageInDto dto);
+        T Single(Expression<Func<T, bool>> whereCondition, Expression<Func<T, object>>? orderByCondition = null, OrderByType orderByType = OrderByType.Asc);
         void Update(List<T> entity);
     }
 }

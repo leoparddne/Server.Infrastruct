@@ -7,10 +7,18 @@ namespace Server.Infrastruct.Services.DB
 {
     public class AuthService<T> : AutoService<T>, IAuthService<T> where T : CommonEntity, new()
     {
-        protected UserInfoModel userModel;
+        private IAuthenticationService authenticationService;
+
+        protected UserInfoModel userModel
+        {
+            get
+            {
+                return  authenticationService.GetUserInfo();
+            }
+        }
         public AuthService(IBaseRepository<T> repository, IAuthenticationService authenticationService) : base(repository)
         {
-            userModel = authenticationService.GetUserInfo();
+            this.authenticationService = authenticationService;
         }
 
         public new void Create(T entity)

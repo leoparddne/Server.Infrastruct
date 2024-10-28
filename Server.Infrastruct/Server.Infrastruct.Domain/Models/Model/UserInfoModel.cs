@@ -74,5 +74,6 @@ namespace Server.Infrastruct.Model.Models.Model
         /// 租户id
         /// </summary>
         public string TenantId { get; set; }
+        public bool ISAdmin { get; set; }
     }
 }

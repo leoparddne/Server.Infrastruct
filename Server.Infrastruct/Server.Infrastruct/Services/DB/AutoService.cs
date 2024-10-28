@@ -71,6 +71,17 @@ namespace Server.Infrastruct.Services.DB
         {
             return Repository.Exists(l => l.ID == id);
         }
+        public bool Exist(Expression<Func<T, bool>> whereCondition)
+        {
+            return Repository.Exists(whereCondition);
+        }
+
+        public T Single(Expression<Func<T, bool>> whereCondition,
+                                 Expression<Func<T, object>>? orderByCondition = null,
+                                 OrderByType orderByType = OrderByType.Asc)
+        {
+            return Repository.QuerySingleByCondition(whereCondition, orderByCondition, orderByType);
+        }
 
         public List<T> Get(Expression<Func<T, bool>> whereCondition,
                                   Expression<Func<T, object>>? orderByCondition = null,
