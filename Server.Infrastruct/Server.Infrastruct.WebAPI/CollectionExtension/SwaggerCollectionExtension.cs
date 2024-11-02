@@ -22,10 +22,19 @@ namespace Server.Infrastruct.WebAPI.CollectionExtension
 
             services.AddSwaggerGen(c =>
             {
-                //c.SwaggerDoc(apiName, new OpenApiInfo
-                //{
-                //    Title = $"{apiName}接口"
-                //});
+                //如果添加了SwaggerDoc则app.UseSwaggerUI时不需要设置Endpoint
+                //会自动生成默认的/swagger/v1/swagger.json
+
+                //如果c.SwaggerDoc添加了文档名称apiName
+                //则会将默认的/swagger/v1/swagger.json改为apiName/swagger.json
+                //此时app.UseSwaggerUI时需要设置RoutePrefix
+                //此时需要设置RoutePrefix将文档名称apiName和默认的swagger路由前缀swagger匹配
+                //避免因为默认的swagger/v1/swagger.json变成apiName/swagger.json导致无法访问
+
+                c.SwaggerDoc(apiName, new OpenApiInfo
+                {
+                    Title = $"{apiName}接口"
+                });
 
                 if (!string.IsNullOrWhiteSpace(swaggerXmlName.Trim()))
                 {
