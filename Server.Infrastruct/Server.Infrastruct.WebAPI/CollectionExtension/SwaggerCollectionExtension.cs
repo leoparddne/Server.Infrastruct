@@ -27,19 +27,19 @@ namespace Server.Infrastruct.WebAPI.CollectionExtension
                 //    Title = $"{apiName}接口"
                 //});
 
-                //if (!string.IsNullOrWhiteSpace(swaggerXmlName.Trim()))
-                //{
-                //    var file = swaggerXmlName.Split(',');
-                //    foreach (var item in file)
-                //    {
-                //        string xmlPath = Path.Combine(basePath, item);
-                //        if (File.Exists(xmlPath))
-                //        {
-                //            c.IncludeXmlComments(xmlPath, true);
-                //        }
-                //    }
-                //}
-                
+                if (!string.IsNullOrWhiteSpace(swaggerXmlName.Trim()))
+                {
+                    var file = swaggerXmlName.Split(',');
+                    foreach (var item in file)
+                    {
+                        string xmlPath = Path.Combine(basePath, item);
+                        if (File.Exists(xmlPath))
+                        {
+                            c.IncludeXmlComments(xmlPath, true);
+                        }
+                    }
+                }
+
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
