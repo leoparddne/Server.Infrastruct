@@ -7,7 +7,7 @@ namespace Server.Infrastruct.Services.DB
 {
     public class AuthService<T> : AutoService<T>, IAuthService<T> where T : CommonEntity, new()
     {
-        private IAuthenticationService authenticationService;
+        protected IAuthenticationService authenticationService;
 
         protected UserInfoModel userModel
         {
