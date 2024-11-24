@@ -1,4 +1,4 @@
-﻿using Common.Toolkit.Helper;
+using Common.Toolkit.Helper;
 using Server.Infrastruct.Model.Dto.InDto;
 using Server.Infrastruct.Model.Dto.InDto.Search;
 using Server.Infrastruct.Model.Entity;
@@ -44,11 +44,12 @@ namespace Server.Infrastruct.Services.DB
 
         public void Update(List<T> entity)
         {
-            //foreach (var item in entity)
-            //{
-            //    item.Update(userModel.UserNo);
-            //}
             Repository.UpdateRange(entity);
+        }
+
+        public void Update(T entity)
+        {
+            Repository.Update(entity);
         }
 
 
