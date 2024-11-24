@@ -1,4 +1,4 @@
-﻿using Server.Infrastruct.Model.Entity;
+using Server.Infrastruct.Model.Entity;
 using Server.Infrastruct.Model.Models.Model;
 using Server.Infrastruct.Repository;
 using Server.Infrastruct.Services.Authentication;
@@ -13,7 +13,7 @@ namespace Server.Infrastruct.Services.DB
         {
             get
             {
-                return  authenticationService.GetUserInfo();
+                return authenticationService.GetUserInfo();
             }
         }
         public AuthService(IBaseRepository<T> repository, IAuthenticationService authenticationService) : base(repository)
@@ -33,6 +33,13 @@ namespace Server.Infrastruct.Services.DB
             {
                 item.Update(userModel.UserNo);
             }
+            base.Update(entity);
+        }
+
+
+        public new void Update(T entity)
+        {
+            entity.Update(userModel.UserNo);
             base.Update(entity);
         }
     }
