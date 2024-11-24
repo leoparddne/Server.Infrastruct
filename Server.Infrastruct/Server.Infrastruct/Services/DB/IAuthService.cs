@@ -1,4 +1,4 @@
-﻿using Server.Infrastruct.Model.Entity;
+using Server.Infrastruct.Model.Entity;
 
 namespace Server.Infrastruct.Services.DB
 {
@@ -7,5 +7,6 @@ namespace Server.Infrastruct.Services.DB
         new void Create(T entity);
 
         new void Update(List<T> entity);
+        new void Update(T entity);
     }
 }
