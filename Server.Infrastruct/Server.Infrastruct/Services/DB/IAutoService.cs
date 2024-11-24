@@ -1,4 +1,4 @@
-﻿using Server.Infrastruct.Model.Dto.InDto;
+using Server.Infrastruct.Model.Dto.InDto;
 using Server.Infrastruct.Model.Dto.InDto.Search;
 using Server.Infrastruct.Model.Entity;
 using Server.Infrastruct.Model.Entity.Base;
@@ -23,5 +23,6 @@ namespace Server.Infrastruct.Services.DB
         PageModel<T> GetConditionPage(SearchConditionPageInDto dto);
         T Single(Expression<Func<T, bool>> whereCondition, Expression<Func<T, object>>? orderByCondition = null, OrderByType orderByType = OrderByType.Asc);
         void Update(List<T> entity);
+        void Update(T entity);
     }
 }
