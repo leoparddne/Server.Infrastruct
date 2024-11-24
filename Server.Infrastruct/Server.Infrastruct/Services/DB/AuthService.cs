@@ -21,25 +21,30 @@ namespace Server.Infrastruct.Services.DB
             this.authenticationService = authenticationService;
         }
 
-        public new void Create(T entity)
+        public new void Create(T entity, bool saveUserID = true)
         {
-            entity.Create(userModel.UserNo);
+            var user = saveUserID ? userModel.UserId : userModel.UserNo;
+            entity.Create(user);
             base.Create(entity);
         }
 
-        public new void Update(List<T> entity)
+        public new void Update(List<T> entity, bool saveUserID = true)
         {
+            var user = saveUserID ? userModel.UserId : userModel.UserNo;
+
             foreach (var item in entity)
             {
-                item.Update(userModel.UserNo);
+                item.Update(user);
             }
             base.Update(entity);
         }
 
 
-        public new void Update(T entity)
+        public new void Update(T entity, bool saveUserID = true)
         {
-            entity.Update(userModel.UserNo);
+            var user = saveUserID ? userModel.UserId : userModel.UserNo;
+
+            entity.Update(user);
             base.Update(entity);
         }
     }
