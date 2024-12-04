@@ -37,9 +37,20 @@ namespace Server.Infrastruct.Services.DB
             Repository.Insert(entity);
         }
 
+        public void Delete(string id)
+        {
+            Repository.DeleteById(id);
+        }
+
         public void Delete(List<string> ids)
         {
             Repository.DeleteByIdList(ids);
+        }
+
+        
+        public void Delete(Expression<Func<T, bool>> whereCondition)
+        {
+            Repository.Delete(whereCondition);
         }
 
         public void Update(List<T> entity)
