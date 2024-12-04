@@ -14,6 +14,8 @@ namespace Server.Infrastruct.Services.DB
         //public IBaseRepository<T> Repository { get; set; }
         void Create(T entity);
         void Delete(List<string> ids);
+        void Delete(string id);
+        void Delete(Expression<Func<T, bool>> whereCondition);
         bool Exist(string id);
         bool Exist(Expression<Func<T, bool>> whereCondition);
         List<T> Get(Expression<Func<T, bool>> whereCondition, Expression<Func<T, object>>? orderByCondition = null, OrderByType orderByType = OrderByType.Asc);
