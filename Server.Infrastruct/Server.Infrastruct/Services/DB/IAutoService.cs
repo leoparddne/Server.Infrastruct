@@ -13,6 +13,7 @@ namespace Server.Infrastruct.Services.DB
     {
         //public IBaseRepository<T> Repository { get; set; }
         void Create(T entity);
+        void Create(List<T> entity);        
         void Delete(List<string> ids);
         void Delete(string id);
         void Delete(Expression<Func<T, bool>> whereCondition);
