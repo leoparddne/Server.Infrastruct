@@ -27,6 +27,17 @@ namespace Server.Infrastruct.Services.DB
             entity.Create(user);
             base.Create(entity);
         }
+        
+        public new void Create(List<T> entity, bool saveUserID = true)
+        {
+            var user = saveUserID ? userModel.UserId : userModel.UserNo;
+            foreach (var item in entity)
+            {
+                item.Create(user);
+            }
+            base.Create(entity);
+        }
+        
 
         public new void Update(List<T> entity, bool saveUserID = true)
         {
