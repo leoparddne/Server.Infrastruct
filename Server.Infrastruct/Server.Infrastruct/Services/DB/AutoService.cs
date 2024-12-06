@@ -36,6 +36,20 @@ namespace Server.Infrastruct.Services.DB
 
             Repository.Insert(entity);
         }
+        
+        public void Create(List<T> entity)
+        {
+            foreach (var item in entity)
+            {
+                if (string.IsNullOrWhiteSpace(item.ID))
+                {
+                    item.ID = GUIDHelper.NewGuid;
+                }
+            }
+
+            Repository.InsertRange(entity);
+        }
+
 
         public void Delete(string id)
         {
